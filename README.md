@@ -8,8 +8,10 @@ Special Thanks: [Makise Emori](https://github.com/byronpiao).
 
 ### Screenshots
 
-![Loading](https://img-cdn.haozi.xyz/2022/04/12/8ee8f47ba4430bcc8b3833b7b0a284ad.png)
+![Loading](https://img-cdn.haozi.xyz/2022/04/12/c2a4d00f002e869aab30c3d3593137ae.png)
+
+![Loaded](https://img-cdn.haozi.xyz/2022/04/12/c69abec3fc084252c485b00744726999.png)
 
 ![Main](https://img-cdn.haozi.xyz/2022/04/12/2a21a01e09ed8003505786b025d56d6c.png)
 
-![Comments](https://img-cdn.haozi.xyz/2022/04/12/fbba4830f4feb8e957dfda5b1cd99ab0.png)
+![Comments](https://img-cdn.haozi.xyz/2022/04/12/eced8a54c573a2dc031944a5c883ef55.png)
