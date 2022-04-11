@@ -1,0 +1,6 @@
+/.well-known
+/node_modules
+/.htaccess
+/.user.ini
+/package-lock.json
+/yarn.lock

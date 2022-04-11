@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="static/css/app.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+		<title>Happy Birthday!</title>
+	</head>
+	<body ondragstart="return false;">
+		<div id="loading">
+			<div class="text-center flex justify-center flex-wrap">
+				<div class="w-full flex justify-center">
+					<img src="static/img/loading.gif" width="160" />
+				</div>
+				<div class="text-foreground mt-4 w-full" id="loading-text">Loading...</div>
+				<div class="text-foreground mt-4 w-full flex flex-wrap justify-center" style="display:none;" id="loading-done">
+					<p class="text-xl">18 岁生日快乐！</p>
+					<button onclick="init()" class="mt-4 block w-full">&gt; 进入站点 &lt;</button>
+					<button onclick="initFast()" class="mt-2 block w-full">&gt; 查看祝福 &lt;</button>
+				</div>
+			</div>
+		</div>
+		<div id="comments" style="display:none; top:-100vh;">
+			<div class="comments-box prose relative">
+				<h2 class="mt-4">生日祝福</h2>
+				<button onclick="hideComments()" class="absolute top-5 right-5 opacity-60">
+					<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 20 20" fill="#000">
+					  <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+					</svg>
+				</button>
+				<script src="https://giscus.app/client.js"
+				        data-repo="liyanqwq/chis-18yo"
+				        data-repo-id="R_kgDOHJ7aEg"
+				        data-category="Announcements"
+				        data-category-id="DIC_kwDOHJ7aEs4COgos"
+				        data-mapping="pathname"
+				        data-reactions-enabled="1"
+				        data-emit-metadata="0"
+				        data-input-position="bottom"
+				        data-theme="light"
+				        data-lang="zh-CN"
+				        crossorigin="anonymous"
+				        async>
+				</script>
+
+			</div>
+		</div>
+		<div id="app">
+			<div class="w-screen h-screen flex justify-center items-center">
+				<div id="words" class="container mx-auto prose lg:prose-xl text-white rounded-xl px-8 py-6 overflow-y-auto" style="background: rgba(120,207,255,0.16);backdrop-filter: blur(16px);box-shadow: 0 0 20px #fff;display: none;max-height: 0;text-shadow: 0 0 3px rgba(255,255,255,0.6)!important;">
+					<p>fy :</p>
+					<p>今天是你的 18 岁生日，祝你生日快乐！</p>
+					<p>不知不觉中，我的好朋友也到了成年的时候了。</p>
+					<p>本来是想给你写封信的，但煽情的话实在是写不出来，想了好久也就憋了这么几行。</p>
+					<p>不过既然都是技术人，那就用老本行写个单页给你庆祝一下好了。</p>
+					<p>高考在即，顺祝金榜题名。</p>
+					<p class="text-right">Li Yan</p>
+					<p class="text-right">2022.4.12</p>
+					<p class="mt-2">
+						<button onclick="loadComments()" style="font-size: 1rem; font-weight: semibold;">&gt; 点击查看朋友们的祝福 &lt;</button>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div id="scene">
+			<div data-depth="0.2">
+				<div class="layer">
+					<img src="static/img/balloon0.svg" id="balloon-left" class="layer-img-balloon absolute left-12" style="top: 100vh;width: 10vw;min-width:120px;" />
+				</div>
+			</div>
+			<div data-depth="0.2">
+				<div class="layer">
+					<img src="static/img/balloon.svg" id="balloon-right" class="layer-img-balloon absolute right-12" style="top: 100vh;width: 10vw;min-width:120px;" />
+				</div>
+			</div>
+			<div data-depth="0.1">
+				<div class="layer">
+					<div class="absolute top-0 left-0 w-screen h-screen flex justify-center items-center">
+						<div style="display: none;" id="cake-container" class="text-center">
+							<img src="static/img/birthday-cake.svg" id="cake" style="max-width: 80vw;" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div data-depth="0.1">
+				<div class="layer">
+					<div class="absolute left-0 w-screen flex justify-center items-center" id="copyright" style="bottom: -120px;">
+						<div class="mb-8 opacity-60 text-white">
+							Made with ♥ by Li Yan<br />
+							<a href="//beian.miit.gov.cn">京ICP备2021018988号</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/parallax-js@3.1.0/dist/parallax.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+		<script>
+			var scene = document.getElementById('scene');
+			var parallaxInstance = new Parallax(scene);
+		</script>
+		<script>
+		    const music = new Audio('https://music.163.com/song/media/outer/url?id=551339691.mp3');
+		    music.loop = true;
+		    music.volume = 0.32;
+		    
+			function loading_hide(){
+				return new Promise(resolve => {
+					setTimeout(() => {
+						$('#loading').fadeOut(2000);
+						resolve('done');
+					}, 1200);
+				});
+			}
+			function loading_balloons(){
+				return new Promise(resolve => {
+					setTimeout(() => {
+						$('#cake-container').fadeIn(1000, function(){
+							$('#balloon-left').animate({
+								top: '4vw'
+							}, 1200, function(){
+								$('#balloon-right').animate({
+									top: '6vw'
+								}, 1200, function(){
+									$('#copyright').animate({
+										bottom: '0'
+									}, function(){
+										resolve('done');
+									});
+								});
+							});
+						});
+					}, 1200);
+				});
+			}
+			function loading_title(){
+				return new Promise(resolve => {
+					setTimeout(() => {
+					    $("#words").show(0, function(){
+					        $("#words").animate({
+					            'max-height': '96vh'
+					        }, 2400, function(){
+					            resolve('done');
+					        });
+					    });
+					}, 1200);
+				});
+			}
+			function template(){
+				return new Promise(resolve => {
+					setTimeout(() => {
+						// functions here
+						resolve('done');
+					}, 1200);
+				});
+			}
+			async function init(){
+			    music.play();
+				await loading_hide();
+				await loading_balloons();
+				await loading_title();
+			}
+			
+			async function loadComments(){
+				return new Promise(resolve => {
+					setTimeout(() => {
+						$('#comments').show(0, function(){
+							$('#comments').animate({
+								top:'0'
+							}, 1200, function(){
+								
+							});
+						});
+						resolve('done');
+					}, 1200);
+				});
+				
+			}
+			async function initFast(){
+			    music.play();
+				await loading_hide();
+				await loadComments();
+				await loading_balloons();
+			}
+			
+			async function hideComments(){
+				$('#comments').animate({
+					top:'-100vw'
+				}, 1200, function(){
+					$('#comments').hide(0, function(){
+						
+					});
+				});
+			}
+			
+			setTimeout(function() {
+				$('#loading-text').hide();
+				$('#loading-done').fadeIn(1000);
+			}, 2000);
+		</script>
+	</body>
+</html>
